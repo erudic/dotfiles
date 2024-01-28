@@ -1,0 +1,17 @@
+[kdeglobals][General]
+ColorScheme=CatppuccinMochaPeach
+
+[kcminputrc][Mouse]
+cursorTheme=Catppuccin-Mocha-Peach-Cursors
+
+[kwinrc][org.kde.kdecoration2]
+ButtonsOnLeft=
+ButtonsOnRight=IAX
+library=org.kde.kwin.aurorae
+theme=__aurorae__svg__CatppuccinMocha-Classic
+
+[plasmarc][Theme]
+name=lightly-plasma-git
+
+[KSplash]
+Theme=Catppuccin-Mocha-Peach-splash
