@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# This script is run by Variety when a new wallpaper is set. You can use Bash, Python or whatever suits you best.
+# Here you can put custom commands for setting the wallpaper on your specific desktop environment,
+# or run commands like notify-send that notify you of the change. You can also add commands to theme your browser,
+# login screen or whatever you desire.
+#
+# Occasionally new versions of this script are released to bring support for new desktops. To apply them, you
+# should either delete this copy (in ~/.config/data/scripts/) and restart Variety, or merge in the changes yourself.
+# Bug fixes are automatically applied by Variety provided the local copy is never changed.
+#
+# PARAMETERS:
+# $1: The first passed parameter is the absolute path to the wallpaper image to be set as wallpaper
+# (after effects, clock, etc. are applied).
+#
+# $2: The second passed parameter is "auto" when the wallpaper is changed automatically (i.e. regular change), "manual"
+# when the user has triggered the change, or "refresh" when the change is triggered by a change in quotes, clock, etc.
+#
+# $3: The third passed parameter is the absolute path to the original wallpaper image (before effects, clock, etc.)
+#
+# $4: Fourth parameter comes from the display mode setting: "os" means that set_wallpaper should try to
+# leave the OS setting unchanged. "zoom" means to try to fill the screen fully with the provided image.
+# Other parameters that could be passed are the scaling modes used by GNOME:
+# "centered", "scaled", "stretched", "zoom", "spanned", "wallpaper"
+# TODO: Ideally all sections below for different DEs would take this setting into account
+#
+# EXAMPLE:
+# echo "$1" # /home/username/.config/variety/wallpaper/wallpaper-clock-fac0eef772f9b03bd9c0f82a79d72506.jpg
+# echo "$2" # auto
+# echo "$3" # /home/username/Pictures/Wallpapers/Nature/green-tunnel-1920x1080-wallpaper-861.jpg
+
+# Here you may apply some additional custom operations on the wallpaper before it is applied.
+# In the end put the path to the actual final wallpaper image file in the WP variable.
+# The default is to simply set WP=$1.
+WP=$1
+
+# For simple WMs, use either feh or nitrogen
+# Implementation note: this uses spaces around list items to enforce matching whole words.
+# This also means that an empty variable won't cause false positives, since it expands to "  "
+if command -v "feh" >/dev/null 2>&1; then
+	# TODO: This should take the scaling parameter $4 into account and use other options than --bg-fill
+	feh --bg-fill "$WP" 2>/dev/null
+elif command -v "nitrogen" >/dev/null 2>&1; then
+	# TODO: This should take the scaling parameter $4 into account and use other options than --set-zoom-fill
+	nitrogen --set-zoom-fill --save "$WP" 2>/dev/null
+fi
+PID=$(pidof swaybg)
+if [[ -n $PID ]]; then
+	# If swaybg is available, use it as prevents system freeze.
+	# See https://github.com/swaywm/sway/issues/5606
+	if command -v "swaybg" >/dev/null 2>&1; then
+		# Grey background flicker is prevented by killing old swaybg process after new one.
+		# See https://github.com/swaywm/swaybg/issues/17#issuecomment-851680720
+		swaybg -i "$WP" -m fill &
+		if [ ! -z "$PID" ]; then
+			sleep 1
+			kill $PID 2>/dev/null
+		fi
+	else
+		swaymsg output "*" bg "$WP" fill 2>/dev/null
+	fi
+fi
+# =====================================================================================
+
+exit 0
