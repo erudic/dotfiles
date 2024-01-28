@@ -30,7 +30,7 @@ floating_modifier $mod
 bindsym $mod+Return exec wezterm
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # change focus
 bindsym $mod+h focus left
