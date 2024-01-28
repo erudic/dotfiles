@@ -279,6 +279,7 @@ for_window [class="^.*"] border pixel 2
 new_window pixel 2
 new_float pixel 2
 smart_borders on
+smart_gaps on
 set $default_gaps_inner 4
 set $default_gaps_outer 4
 gaps inner $default_gaps_inner
@@ -300,7 +301,7 @@ set $yellowbrown	#e1b700
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
+client.focused		    	$lightblue	$darkbluetrans	$white		$mediumgrey	$mediumgrey
 client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
 client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
