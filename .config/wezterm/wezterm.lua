@@ -14,7 +14,7 @@ config.hide_tab_bar_if_only_one_tab = true
 
 -- Darkpuccin
 local custom = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
-custom.background = "#131020"
+custom.background = "rgba(19, 16, 32, 0.7)"
 custom.tab_bar.background = "#040404"
 custom.tab_bar.inactive_tab.bg_color = "#0f0f0f"
 custom.tab_bar.new_tab.bg_color = "#080808"
@@ -26,6 +26,13 @@ config.window_padding = {
 	right = 0,
 	top = 0,
 	bottom = 0,
+}
+config.warn_about_missing_glyphs = false
+
+-- maclike copy and paste
+config.keys = {
+	{ key = "c", mods = "ALT", action = wezterm.action.CopyTo("Clipboard") },
+	{ key = "v", mods = "ALT", action = wezterm.action.PasteFrom("Clipboard") },
 }
 -- and finally, return the configuration to wezterm
 return config
