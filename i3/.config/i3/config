@@ -207,11 +207,6 @@ bindsym Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-
 bindsym $mod+space exec rofi -show drun
 # Power Profiles menu switcher (rofi)
 # bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
-# plasma audio controll
-bindsym XF86AudioRaiseVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
-bindsym XF86AudioLowerVolume exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
-bindsym XF86AudioMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mute"
-bindsym XF86AudioMicMute exec --no-startup-id qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "mic_mute"
 
 
 # TODO think about this
@@ -317,3 +312,7 @@ exec_always --no-startup-id picom -b
 # wallpaper (variety+nitrogen)
 exec --no-startup-id sleep 2 && nitrogen --restore
 exec --no-startup-id variety --profile ~/.config/variety
+
+
+# source additional desktop dependent configs
+include $HOME/.config/i3/desktop/$XDG_CURRENT_DESKTOP
