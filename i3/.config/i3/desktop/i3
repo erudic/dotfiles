@@ -6,6 +6,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Quit?' -b 'Yes' 'i3-msg exit
 
 # Polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# dunst
+exec --no-startup-id dunst
+# nm applet
+exec --no-startup-id nm-applet
 
 # Media player controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
