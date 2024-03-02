@@ -15,6 +15,7 @@ return {
           config = {
             workspaces = {
               notes = "~/notes/lb",
+              private = "~/notes/pr",
             },
           },
         },
