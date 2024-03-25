@@ -19,9 +19,9 @@ return {
 
     -- Setup orgmode
     require("orgmode").setup({
-      org_agenda_files = "~/orgfiles/projects/*",
+      org_agenda_files = "~/orgfiles/*",
       org_default_notes_file = "~/orgfiles/refile.org",
-      org_todo_keywords = { "TODO", "WAITING", "LATER", "|", "DONE", "DELEGATED" },
+      org_todo_keywords = { "TODO(t)", "WAITING(w)", "LATER(l)", "|", "DONE(d)", "DELEGATED(g)", "CANCELLED(c)" },
     })
   end,
 }
