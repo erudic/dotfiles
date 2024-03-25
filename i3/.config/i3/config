@@ -226,7 +226,7 @@ for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
 
 # keyboard
-exec "setxkbmap -layout us,hr -option ctrl:swapcaps -option grp:alt_space_toggle"
+exec --no-startup-id "setxkbmap -layout us,hr -option ctrl:swapcaps -option grp:alt_space_toggle"
 
 ##################
 # floating rules #
@@ -344,6 +344,8 @@ exec_always --no-startup-id picom -b
 exec --no-startup-id sleep 2 && nitrogen --restore
 exec --no-startup-id variety --profile ~/.config/variety
 
+# syncthing
+exec --no-startup-id syncthingtray 
 
 # source additional desktop dependent configs
 include $HOME/.config/i3/desktop/$XDG_CURRENT_DESKTOP
