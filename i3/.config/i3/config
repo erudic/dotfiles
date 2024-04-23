@@ -226,7 +226,7 @@ for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
 
 # keyboard
-exec --no-startup-id "setxkbmap -layout us,hr -option ctrl:swapcaps -option grp:alt_space_toggle"
+exec --no-startup-id "setxkbmap -layout us,hr -option ctrl:swapcaps -option grp:alt_space_toggle" 
 
 ##################
 # floating rules #
@@ -346,6 +346,8 @@ exec --no-startup-id variety --profile ~/.config/variety
 
 # syncthing
 exec --no-startup-id syncthingtray 
+# redshift-gtk
+exec --no-startup-id redshift-gtk 
 
 # source additional desktop dependent configs
 include $HOME/.config/i3/desktop/$XDG_CURRENT_DESKTOP
