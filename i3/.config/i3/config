@@ -209,6 +209,9 @@ bindsym $mod+space exec rofi -show drun
 # bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
 bindsym $mod+o exec rofimoji
 
+# powermenu
+bindsym $mod+p exec rofi -show power-menu -modi power-menu:rofi-power-menu
+
 # TODO think about this
 
 # bind program to workspace and focus to them on startup:
@@ -345,7 +348,7 @@ exec --no-startup-id sleep 2 && nitrogen --restore
 exec --no-startup-id variety --profile ~/.config/variety
 
 # syncthing
-exec --no-startup-id syncthingtray 
+exec --no-startup-id syncthingtray --wait
 # redshift-gtk
 exec --no-startup-id redshift-gtk 
 
