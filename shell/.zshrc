@@ -82,11 +82,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -146,5 +146,9 @@ alias a='source .venv/bin/activate'
 alias activate='source .venv/bin/activate'
 
 alias projects='cd ~/Projects/'
+alias projgo='cd $(find ~/Projects/ -maxdepth 1 -type d | fzf)'
 
 alias config='/usr/bin/git --git-dir=/home/gendo/dotfile_repo/ --work-tree=/home/gendo'
+alias open="handlr open"
+
+alias pbcopy="xclip -sel clip"
